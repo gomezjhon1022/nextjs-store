@@ -1,6 +1,5 @@
 import { env } from "app/config/env"
 import { shopifyUrls } from "./urls"
-import { withCoalescedInvoke } from "next/dist/lib/coalesced-function"
 
 export const getCollections = async () => {
   try {
@@ -22,6 +21,22 @@ export const getCollections = async () => {
     })
     return transformedColections
   } catch(error) {
+    console.log(error)
+  }
+}
+
+export const getCollectionProducts = async (id:string) => {
+  try {
+    const response = await fetch(shopifyUrls.collections.products(id), {
+      headers: new Headers(
+        {
+          'X-Shopify-Access-Token': env.SHOPIFY_TOKEN
+        }
+      )
+    })
+    const { products } = await response.json()
+    return products
+  } catch (error) {
     console.log(error)
   }
 }
