@@ -26,9 +26,6 @@ export const ProductView = ({ product }: ProductViewProps) => {
         <SanitizeHTML tag="p" className={styles.ProductView__info__description}>
           {product.description}
         </SanitizeHTML>
-        {/* <p className={styles.ProductView__info__description}>
-          {product.description}
-        </p> */}
         <span className={styles.ProductView__info__price}>
           $ {product.price}
         </span>
