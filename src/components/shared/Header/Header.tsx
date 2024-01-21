@@ -1,11 +1,10 @@
 import Link from 'next/link'
 import styles from './Header.module.css'
-import { cookies } from 'next/headers'
+import { validateAccessToken } from 'app/utils/auth/validateAccessToken'
 
-export const Header = () => {
-  const cookiesStore=cookies()
-  const token = cookiesStore.get('accesToken')?.value
+export const Header = async () => {
 
+  const customer = await validateAccessToken()
   return (
     <header>
       <nav>
@@ -26,7 +25,7 @@ export const Header = () => {
             </Link>
           </li>
         </ul>
-        {token?(<p>Hello!</p>):(<Link href="/login">Login</Link>)}
+        {customer?.firstName?(<p>Hello! {customer.firstName}</p>):(<Link href="/login">Login</Link>)}
       </nav>
     </header>
   )
