@@ -1,6 +1,7 @@
 import Link from 'next/link'
-import styles from './Header.module.sass'
 import { validateAccessToken } from 'app/utils/auth/validateAccessToken'
+import { ShoppingCart } from '../ShoppingCart'
+import styles from './Header.module.sass'
 
 export const Header = async () => {
 
@@ -23,6 +24,7 @@ export const Header = async () => {
       </nav>
       <div className={styles.Header__user}>
         {customer?.firstName ? (<p>Hello! {customer.firstName}</p>):(<Link href="/login">Login</Link>)}
+        <ShoppingCart />
       </div>
     </header>
   )
