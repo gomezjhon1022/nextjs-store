@@ -10,7 +10,7 @@ export const createAccessToken = async (email:string, password:string) => {
     "password": password
   })
 
-  const { accessToken, expiresAt } = customerAccessTokenCreate.customerAccessToken
+  const { accessToken, expiresAt } = customerAccessTokenCreate?.customerAccessToken
   if (accessToken) {
     cookiesStore.set("accessToken", accessToken, {
       path: "/",
@@ -18,5 +18,7 @@ export const createAccessToken = async (email:string, password:string) => {
       httpOnly: true,
       sameSite: "strict"
     })
+
+    return accessToken
   }
 }
