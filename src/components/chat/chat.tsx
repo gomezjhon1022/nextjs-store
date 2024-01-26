@@ -54,7 +54,7 @@ export default function Chat(props: {agent:string}) {
       .filter(m => m.role !=='system')
       .map(m => (
         <div key={m.id}>
-          {m.role === 'user' ? 'User: ' : 'AI: '}
+          {m.role === 'user' ? '👤: ' : '🤖: '}
           {m.content}
         </div>
       ))}

@@ -1,5 +1,6 @@
 "use client"
 
+import { useEffect } from 'react';
 import styles from './error.module.sass'
 
 interface ErrorProps{
@@ -9,6 +10,9 @@ interface ErrorProps{
 
 export default function Error({error, reset}:ErrorProps) {
 
+  useEffect(() => {
+    console.log(error)
+  }, [error])
   return (
     <div className={styles.ContainerError}>
       <h1 >:(</h1>
