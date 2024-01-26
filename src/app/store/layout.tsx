@@ -1,7 +1,7 @@
 import React from "react";
 import { getCollections } from "app/services/shopify/collections"
 import Link from "next/link";
-import { ChatLink } from "app/services/shopify/collections"
+import { ChatLink } from "app/components/Store/ChatLink"
 import styles from './StoreLayout.module.sass'
 
 export default async function Layout({children}: {children: React.ReactNode}) {
